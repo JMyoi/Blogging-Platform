@@ -40,14 +40,15 @@ module.exports = {
     }
    ], {});
 
-      const posts = await queryInterface.sequelize.query(`SELECT id FROM users`);
+      const posts = await queryInterface.sequelize.query(`SELECT id FROM posts`);
 
       const postId = posts[0][0].id;
     //add comments
     await queryInterface.bulkInsert("comments",[
       {
         content:"this is a comment",
-        UserId: userId,
+        UserId:userId,
+        PostId:postId,
         createdAt: new Date(),
         updatedAt: new Date(),
         
