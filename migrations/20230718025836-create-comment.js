@@ -12,6 +12,26 @@ module.exports = {
       content: {
         type: Sequelize.STRING
       },
+      UserId:{
+        type:Sequelize.INTEGER,
+        allowNull:false,
+        onDelete: 'CASCADE',
+        OnUpdate: 'CASCADE',
+        references:{
+          model: 'users',
+          key: 'id',
+        },
+      },
+      PostId:{
+        type:Sequelize.INTEGER,
+        allowNull:false,
+        onDelete: 'CASCADE',
+        OnUpdate: 'CASCADE',
+        references:{
+          model: 'posts',
+          key: 'id',
+        }
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

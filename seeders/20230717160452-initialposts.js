@@ -4,14 +4,7 @@
 module.exports = {
 
   async up (queryInterface, Sequelize) {
-    //add comments
-    await queryInterface.bulkInsert("comments",[
-      {
-        content:"this is a comment",
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      }
-    ],{});
+   
     //insert the users table
     await queryInterface.bulkInsert("users",[
         {
@@ -46,6 +39,20 @@ module.exports = {
       UserId: userId,
     }
    ], {});
+
+      const posts = await queryInterface.sequelize.query(`SELECT id FROM users`);
+
+      const postId = posts[0][0].id;
+    //add comments
+    await queryInterface.bulkInsert("comments",[
+      {
+        content:"this is a comment",
+        UserId: userId,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        
+      }
+    ],{});
   },
 
   async down (queryInterface, Sequelize) {
