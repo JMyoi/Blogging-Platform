@@ -2,35 +2,55 @@
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
+
   async up (queryInterface, Sequelize) {
+    //add comments
+    await queryInterface.bulkInsert("comments",[
+      {
+        content:"this is a comment",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      }
+    ],{});
+    //insert the users table
+    await queryInterface.bulkInsert("users",[
+        {
+          name: "Jay",
+          email: "Jay@Myoi.com",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+      ],{});
+      const users = await queryInterface.sequelize.query(`SELECT id FROM users`);
+
+      const userId = users[0][0].id;
+
+      //insert the posts table
     await queryInterface.bulkInsert('posts', [{
-     usersId:"234",
      title:"yes",
      content:"yesyesyesyesyesyesyesyesyesyesyesyesyesyesyesyesyesyesyesyesyesyesyes",
      createdAt: new Date(),
-     updatedAt: new Date() 
+     updatedAt: new Date(),
+     UserId: userId,
     }, {
-      usersId:"234",
      title:"yes",
      content:"yesyesyesyesyesyesyesyesyesyesyesyesyesyesyesyesyesyesyesyesyesyesyes",
      createdAt: new Date(),
-     updatedAt: new Date()
+     updatedAt: new Date(),
+     UserId: userId,
     }, {
-      usersId:"234",
       title:"yes",
       content:"yesyesyesyesyesyesyesyesyesyesyesyesyesyesyesyesyesyesyesyesyesyesyes",
       createdAt: new Date(),
-      updatedAt: new Date()
-    }, {
-      usersId:"234",
-      title:"yes",
-      content:"yesyesyesyesyesyesyesyesyesyesyesyesyesyesyesyesyesyesyesyesyesyesyes",
-      createdAt: new Date(),
-      updatedAt: new Date()
-    }], {});
+      updatedAt: new Date(),
+      UserId: userId,
+    }
+   ], {});
   },
 
   async down (queryInterface, Sequelize) {
     await queryInterface.bulkDelete('posts', null, {});
+    await queryInterface.bulkDelete("users", null, {});
+    await queryInterface.bulkDelete("comments", null, {});
   }
 };
