@@ -1,7 +1,10 @@
 const express = require("express");
+const bcrypt = require("bcryptjs");
+const session = require('express-session');
+ 
 const app = express();
 const port = 4000;
-const {Post} = require('./models');
+const {Post, User} = require('./models');
 
 //middleware
 
@@ -14,6 +17,22 @@ app.use((req, res, next) => {
     });
     next();
   });
+  //middleware for express session 
+  app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      maxAge: 3600000 // 1 hour
+    },
+  }));
+  //protect the route if user is not logged in
+  const authenticateUser = (req, res, next) => {
+    if (!req.session.userId) {
+      return res.status(401).json({ message: 'You must be logged in to view this page.' });
+    }
+    next();
+  };
 
 app.get("/", (req, res) => {
   res.send("Welcome to the Blogging Platform API!");
@@ -23,9 +42,84 @@ app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
 });
 
+//route for signup
+app.post('/signup', async(req,res)=>{
+  const hashedPassword = await bcrypt.hash(req.body.password, 10);
+  try {
+    const user = await User.create({
+      name:req.body.name,
+      email:req.body.email, 
+      password:hashedPassword
+    });
+    //if the user was created successfully log it back.
+    res.status(201).json({message:"user created successfully",
+    user:{
+      name:user.name,
+      email:user.email
+    }});
+    req.session.userId = user.id;
+
+  } catch (error) {
+    console.error(error);
+    if(error.name === 'SequelizeValidationError'){
+      return res.status(422).json({errors:error.errors.map(e=>e.message)});
+  }
+  res.status(500).send({message:"error occured while creating user"});
+  }
+});
+
+//route for login
+app.post('/login', async (req, res) => {
+  try {
+    // First, find the user by their email address
+    const user = await User.findOne({ where: { email: req.body.email } });
+
+    if (user === null) {
+      // If the user isn't found in the database, return an 'incorrect credentials' message
+      return res.status(401).json({
+        message: 'Incorrect email or password',
+      });
+    }
+
+    // If the user is found, we then use bcrypt to check if the password in the request matches the hashed password in the database
+    bcrypt.compare(req.body.password, user.password, (error, result) => {
+      if (result) {
+        // Passwords match
+        // TODO: Create a session for this user
+        req.session.userId = user.id;
+
+        res.status(200).json({
+          message: 'Logged in successfully',
+          user: {
+            name: user.name,
+            email: user.email,
+          },
+        });
+      } else {
+        // Passwords don't match
+        res.status(401).json({ message: 'Incorrect email or password' });
+      }
+    });
+  } catch (error) {
+    res.status(500).json({ message: 'An error occurred during the login process' });
+  }
+});
+
+//route for logout
+app.delete('/logout', (req, res) => {
+  req.session.destroy(err => {
+      if (err) {
+          return res.sendStatus(500);
+      }
+
+      res.clearCookie('connect.sid');
+      return res.sendStatus(200);
+  });
+});
+
 
   // get all post
-  app.get("/posts", async(req, res) => {
+  app.get("/posts", authenticateUser, async(req, res) => {
     try {
         const allPosts = await Post.findAll();
         res.status(200).json(allPosts);
@@ -36,7 +130,7 @@ app.listen(port, () => {
   });
   
   // Get a post by id
-  app.get("/posts/:id", async(req, res) => {
+  app.get("/posts/:id",authenticateUser, async(req, res) => {
     const postId = parseInt(req.params.id,10);
     try {
         const post = await Post.findOne({where:{id:postId}});
@@ -53,7 +147,7 @@ app.listen(port, () => {
   });
   
   // Create a new post
-  app.post("/posts", async(req, res) => {
+  app.post("/posts", authenticateUser,async(req, res) => {
     try {
         const newPost = await Post.create(req.body);
         res.status(200).json(newPost);
@@ -66,7 +160,7 @@ app.listen(port, () => {
   });
   
   // Update a specific post
-  app.patch("/posts/:id", async(req, res) => {
+  app.patch("/posts/:id", authenticateUser,async(req, res) => {
     const postId = parseInt(req.params.id,10);
     try {
         const[numberOfAffectedRows, affectedRows] = await Post.update(req.body,{where:{id:postId},returning:true});
@@ -86,7 +180,7 @@ app.listen(port, () => {
   });
   
   // Delete a specific post
-  app.delete("/posts/:id", async(req, res) => {
+  app.delete("/posts/:id", authenticateUser,async(req, res) => {
     const postId = parseInt(req.params.id, 10);
   
     try{

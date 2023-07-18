@@ -10,6 +10,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       this.belongsTo(models.User);
+      this.belongsToMany(models.User,{through:'Comment'});
     }
   }
   Post.init({

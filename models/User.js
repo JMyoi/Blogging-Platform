@@ -10,11 +10,16 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       this.hasMany(models.Post);
+      this.belongsToMany(models.Post,{through:'Comment'});
     }
   }
   User.init({
     name: DataTypes.STRING,
-    email: DataTypes.STRING
+    email: DataTypes.STRING,
+    password:{
+      type:DataTypes.STRING,
+      allowNull:false
+    }
   }, {
     sequelize,
     modelName: 'User',

@@ -1,4 +1,5 @@
 'use strict';
+const bycrypt = require('bcryptjs');
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
@@ -12,6 +13,7 @@ module.exports = {
           email: "Jay@Myoi.com",
           createdAt: new Date(),
           updatedAt: new Date(),
+          password: await bycrypt.hash("password",10)
         },
       ],{});
       const users = await queryInterface.sequelize.query(`SELECT id FROM users`);

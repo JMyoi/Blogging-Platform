@@ -30,7 +30,7 @@ module.exports = {
         references:{
           model: 'posts',
           key: 'id',
-        }
+        },
       },
       createdAt: {
         allowNull: false,
