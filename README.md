@@ -71,3 +71,36 @@ Task 6: Client-Side Authentication
   Remove a Comment from a Post.
   Create API endpoints to perform the above operations.
   Test the advanced queries and manipulation using Postman.
+
+*********************************************************************************************************************************************************
+wait a minute Please Mister Postman
+
+Signup test
+  
+<img width="650" alt="image" src="https://github.com/JMyoi/Blogging-Platform/assets/127246162/519c3980-7089-408b-8596-abbf775b2b24">
+
+Login test
+success and fail
+  <img width="680" alt="image" src="https://github.com/JMyoi/Blogging-Platform/assets/127246162/f45f4ec7-ed0a-48db-b8cc-42bdceaa2f94">
+  <img width="660" alt="image" src="https://github.com/JMyoi/Blogging-Platform/assets/127246162/9412a77b-b1f5-4963-86b2-f5ab5babb89b">
+
+logout
+  <img width="674" alt="image" src="https://github.com/JMyoi/Blogging-Platform/assets/127246162/43130523-9d89-4b1d-b93b-67b8344041ec">
+
+CRUD operations on posts
+
+not logged in
+  <img width="654" alt="image" src="https://github.com/JMyoi/Blogging-Platform/assets/127246162/11bf7882-8951-45f5-b9c4-62e2a30d073d">
+  <img width="660" alt="image" src="https://github.com/JMyoi/Blogging-Platform/assets/127246162/6d5f5faf-35db-4773-9a02-87e1910ef1bc">
+  <img width="680" alt="image" src="https://github.com/JMyoi/Blogging-Platform/assets/127246162/bfa94d30-3bee-4da9-9252-08b4db25da61">
+Logged in
+  <img width="639" alt="image" src="https://github.com/JMyoi/Blogging-Platform/assets/127246162/6a850d5d-dba0-4558-adde-4cb51a1c7299">
+  <img width="651" alt="image" src="https://github.com/JMyoi/Blogging-Platform/assets/127246162/60812cd5-0ceb-449d-8cd8-6334c09f5652">
+  <img width="663" alt="image" src="https://github.com/JMyoi/Blogging-Platform/assets/127246162/91302e12-9e18-4272-b65d-bd788f768f24">
+
+  
+
+
+
+
+  
