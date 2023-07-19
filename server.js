@@ -85,7 +85,7 @@ app.post('/login', async (req, res) => {
     bcrypt.compare(req.body.password, user.password, (error, result) => {
       if (result) {
         // Passwords match
-        // TODO: Create a session for this user
+        //Create a session for this user
         req.session.userId = user.id;
 
         res.status(200).json({
