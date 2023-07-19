@@ -1,0 +1,8 @@
+//this is what is in the .env file that was git ignored
+
+DB_USER=jaychen
+DB_HOST=localhost
+DB_NAME=bloggingplatform
+DB_PASSWORD=JayChenPass
+DB_PORT=5432g
+SESSION_SECRET=43866483d5ab633b60e103ddb9ca60e11487eab02de45be6a29d250fed2b31966cb0fee7c583f92fef5c3017bfdec86c94a6345f842dd08ab5e0a04e68401cd6
