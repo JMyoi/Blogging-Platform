@@ -75,31 +75,31 @@ Task 6: Client-Side Authentication
 *********************************************************************************************************************************************************
 wait a minute Please Mister Postman
 
-Signup test
+<h1>Sign up test</h1>
   
 <img width="650" alt="image" src="https://github.com/JMyoi/Blogging-Platform/assets/127246162/519c3980-7089-408b-8596-abbf775b2b24">
 
-Login test
-success and fail
+<h1>Login test</h1>
+<h1>success and fail
   <img width="680" alt="image" src="https://github.com/JMyoi/Blogging-Platform/assets/127246162/f45f4ec7-ed0a-48db-b8cc-42bdceaa2f94">
   <img width="660" alt="image" src="https://github.com/JMyoi/Blogging-Platform/assets/127246162/9412a77b-b1f5-4963-86b2-f5ab5babb89b">
 
-logout
+<h1>logout</h1>
   <img width="674" alt="image" src="https://github.com/JMyoi/Blogging-Platform/assets/127246162/43130523-9d89-4b1d-b93b-67b8344041ec">
 
-CRUD operations on posts
+<h1>CRUD operations on posts</h1>
 
-not logged in
+<h1>not logged in</h1>
   <img width="654" alt="image" src="https://github.com/JMyoi/Blogging-Platform/assets/127246162/11bf7882-8951-45f5-b9c4-62e2a30d073d">
   <img width="660" alt="image" src="https://github.com/JMyoi/Blogging-Platform/assets/127246162/6d5f5faf-35db-4773-9a02-87e1910ef1bc">
   <img width="680" alt="image" src="https://github.com/JMyoi/Blogging-Platform/assets/127246162/bfa94d30-3bee-4da9-9252-08b4db25da61">
-Logged in
+<h1>Logged in</h1>
   <img width="639" alt="image" src="https://github.com/JMyoi/Blogging-Platform/assets/127246162/6a850d5d-dba0-4558-adde-4cb51a1c7299">
   <img width="651" alt="image" src="https://github.com/JMyoi/Blogging-Platform/assets/127246162/60812cd5-0ceb-449d-8cd8-6334c09f5652">
   <img width="663" alt="image" src="https://github.com/JMyoi/Blogging-Platform/assets/127246162/91302e12-9e18-4272-b65d-bd788f768f24">
 
   
-CRUD operations on comments
+<h1>CRUD operations on comments</h1>
   <img width="639" alt="image" src="https://github.com/JMyoi/Blogging-Platform/assets/127246162/69bad46a-36ec-480a-a191-7b06abf3a9ca">
   <img width="648" alt="image" src="https://github.com/JMyoi/Blogging-Platform/assets/127246162/8ce2b8f5-e268-4083-ae9f-2f66f7ea93c6">
   <img width="645" alt="image" src="https://github.com/JMyoi/Blogging-Platform/assets/127246162/8beb0159-7692-43d5-aa28-3d33c87d5fd3">
