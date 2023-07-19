@@ -99,6 +99,11 @@ Logged in
   <img width="663" alt="image" src="https://github.com/JMyoi/Blogging-Platform/assets/127246162/91302e12-9e18-4272-b65d-bd788f768f24">
 
   
+CRUD operations on comments
+  <img width="639" alt="image" src="https://github.com/JMyoi/Blogging-Platform/assets/127246162/69bad46a-36ec-480a-a191-7b06abf3a9ca">
+  <img width="648" alt="image" src="https://github.com/JMyoi/Blogging-Platform/assets/127246162/8ce2b8f5-e268-4083-ae9f-2f66f7ea93c6">
+  <img width="645" alt="image" src="https://github.com/JMyoi/Blogging-Platform/assets/127246162/8beb0159-7692-43d5-aa28-3d33c87d5fd3">
+  <img width="638" alt="image" src="https://github.com/JMyoi/Blogging-Platform/assets/127246162/808970c5-9594-47b3-8aca-bef5e3addbba">
 
 
 
