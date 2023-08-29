@@ -8,6 +8,7 @@ const {Post, User, Comment} = require('./models');
 
 //middleware
 //used this to practice backend
+//need to look back and rework
 
 app.use(express.json());//this allows us to send json data formatted bodies in our requests.
 
