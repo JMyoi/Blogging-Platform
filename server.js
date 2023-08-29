@@ -7,6 +7,7 @@ const port = 4000;
 const {Post, User, Comment} = require('./models');
 
 //middleware
+//used this to practice backend
 
 app.use(express.json());//this allows us to send json data formatted bodies in our requests.
 
